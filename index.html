@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live FOMC Prediction Results</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f5f7fa;
+      color: #111;
+      line-height: 1.5;
+    }
+    header {
+      background: #003366;
+      color: white;
+      padding: 28px 40px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 32px;
+    }
+    header p {
+      margin: 8px 0 0;
+      color: #ffbe00;
+      font-style: italic;
+    }
+    main {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 20px 50px;
+    }
+    section {
+      background: white;
+      padding: 24px;
+      margin-bottom: 24px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    h2 {
+      color: #003366;
+      margin-top: 0;
+      border-bottom: 3px solid #ffbe00;
+      padding-bottom: 8px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 16px;
+      background: #fafafa;
+    }
+    .big {
+      font-size: 26px;
+      font-weight: bold;
+      color: #003366;
+    }
+    .status {
+      font-weight: bold;
+      color: #b5531c;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background: #003366;
+      color: white;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      margin-top: 12px;
+    }
+    footer {
+      text-align: center;
+      color: #666;
+      font-size: 13px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Predicting U.S. Treasury Yield Movements Around FOMC Announcements</h1>
+    <p>Live Prediction Results | Fernando Vaca Castello | GWU Data Science Capstone</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Live Prediction: April 28–29, 2026 FOMC Meeting</h2>
+      <p>
+        Predictions were generated before the 2:00 PM FOMC announcement using real-time market,
+        macroeconomic, and FOMC statement inputs. This page was created to update the poster
+        after printing with the realized live prediction results.
+      </p>
+
+      <div class="grid">
+        <div class="card">
+          <p>Predicted 2Y Direction</p>
+          <div class="big">[UP / DOWN]</div>
+        </div>
+        <div class="card">
+          <p>Predicted Large Move</p>
+          <div class="big">[YES / NO]</div>
+        </div>
+        <div class="card">
+          <p>Predicted Magnitude</p>
+          <div class="big">[X.XXXX pp]</div>
+        </div>
+        <div class="card">
+          <p>Actual 2Y Move</p>
+          <div class="big">[X.XXXX pp]</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Model Vote Summary</h2>
+      <table>
+        <tr>
+          <th>Model</th>
+          <th>Prediction</th>
+          <th>Probability / Estimate</th>
+          <th>Correct?</th>
+        </tr>
+        <tr>
+          <td>Logistic Regression Direction</td>
+          <td>[UP / DOWN]</td>
+          <td>[X.XXX]</td>
+          <td>[Yes / No]</td>
+        </tr>
+        <tr>
+          <td>Random Forest Direction</td>
+          <td>[UP / DOWN]</td>
+          <td>[X.XXX]</td>
+          <td>[Yes / No]</td>
+        </tr>
+        <tr>
+          <td>Logistic Regression Big Move</td>
+          <td>[Big / Small]</td>
+          <td>[X.XXX]</td>
+          <td>[Yes / No]</td>
+        </tr>
+        <tr>
+          <td>Random Forest Big Move</td>
+          <td>[Big / Small]</td>
+          <td>[X.XXX]</td>
+          <td>[Yes / No]</td>
+        </tr>
+        <tr>
+          <td>XGBoost Big Move</td>
+          <td>[Big / Small]</td>
+          <td>[X.XXX]</td>
+          <td>[Yes / No]</td>
+        </tr>
+        <tr>
+          <td>ARIMAX Yield Change</td>
+          <td>[Magnitude]</td>
+          <td>[X.XXXX pp]</td>
+          <td>[Yes / No]</td>
+        </tr>
+        <tr>
+          <td>Lasso Yield Change</td>
+          <td>[Magnitude]</td>
+          <td>[X.XXXX pp]</td>
+          <td>[Yes / No]</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Interpretation</h2>
+      <p>
+        The live prediction exercise provides a true out-of-sample test because model outputs were
+        recorded before the FOMC announcement. While one event cannot fully validate the model,
+        it demonstrates that the framework can be applied in real time to forecast financial market
+        reactions.
+      </p>
+      <p class="status">
+        Final result: [The model correctly / incorrectly predicted the direction and/or large-move classification.]
+      </p>
+    </section>
+
+    <section>
+      <h2>Core Results from Historical Test Set</h2>
+      <div class="grid">
+        <div class="card">
+          <p>Best Classification Model</p>
+          <div class="big">XGBoost</div>
+        </div>
+        <div class="card">
+          <p>Big-Move AUC</p>
+          <div class="big">0.721</div>
+        </div>
+        <div class="card">
+          <p>Big-Move Accuracy</p>
+          <div class="big">70%</div>
+        </div>
+        <div class="card">
+          <p>Best Regression RMSE</p>
+          <div class="big">0.0738 pp</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Additional Figures</h2>
+      <p>Add your exported plots here after uploading the image files to the same folder as this HTML.</p>
+
+      <h3>SHAP Values</h3>
+      <img src="plot2_shap_beeswarm_bigmove.png" alt="SHAP Values">
+
+      <h3>Policy Surprise Over Time</h3>
+      <img src="plot10_policy_surprise.png" alt="Policy Surprise">
+
+      <h3>Forward Guidance Density</h3>
+      <img src="plot8_forward_guidance.png" alt="Forward Guidance">
+    </section>
+
+    <footer>
+      GWU Data Science Capstone | Spring 2026 | Fernando Vaca Castello
+    </footer>
+  </main>
+</body>
+</html>
