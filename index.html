@@ -143,4 +143,123 @@
           <p>Predicted Magnitude</p>
           <div class="big">0.0142 pp</div>
         </div>
-        <div
+        <div class="card">
+          <p>Actual 2Y Move</p>
+          <div class="big">+0.14 pp (UP)</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Model Vote Summary</h2>
+      <table>
+        <tr>
+          <th>Model</th>
+          <th>Prediction</th>
+          <th>Probability / Estimate</th>
+          <th>Correct?</th>
+        </tr>
+        <tr>
+          <td>Logistic Regression Direction</td>
+          <td>DOWN</td>
+          <td>0.000</td>
+          <td style="color:#c0392b;font-weight:bold">No</td>
+        </tr>
+        <tr>
+          <td>Random Forest Direction</td>
+          <td>UP</td>
+          <td>0.508</td>
+          <td style="color:#27ae60;font-weight:bold">Yes</td>
+        </tr>
+        <tr>
+          <td>Logistic Regression Big Move</td>
+          <td>Small Move</td>
+          <td>0.068</td>
+          <td style="color:#c0392b;font-weight:bold">No</td>
+        </tr>
+        <tr>
+          <td>Random Forest Big Move</td>
+          <td>BIG MOVE</td>
+          <td>0.675</td>
+          <td style="color:#27ae60;font-weight:bold">Yes</td>
+        </tr>
+        <tr>
+          <td>XGBoost Big Move</td>
+          <td>BIG MOVE</td>
+          <td>0.788</td>
+          <td style="color:#27ae60;font-weight:bold">Yes</td>
+        </tr>
+        <tr>
+          <td>ARIMAX Yield Change</td>
+          <td>-0.0278 pp (DOWN)</td>
+          <td>-0.0278 pp</td>
+          <td style="color:#c0392b;font-weight:bold">No</td>
+        </tr>
+        <tr>
+          <td>Lasso Yield Change</td>
+          <td>+0.0006 pp (flat)</td>
+          <td>0.0006 pp</td>
+          <td style="color:#c0392b;font-weight:bold">No (direction yes, magnitude off)</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Interpretation</h2>
+      <p>
+        The live prediction exercise provides a true out-of-sample test because model outputs were
+        recorded before the FOMC announcement. While one event cannot fully validate the model,
+        it demonstrates that the framework can be applied in real time to forecast financial market
+        reactions.
+      </p>
+      <p>
+        The ensemble shows a split on direction (1/2 models predict UP) and majority agreement on a big move (2/3 models).
+        ARIMAX predicts a small downward move of -0.028 pp while Lasso predicts essentially no change.
+        The market priced in a 100% probability of a hold, which was confirmed.
+      </p>
+      <p class="status">
+        Final result: The big-move models (RF and XGBoost) correctly predicted a large upward move of +0.14 pp. RF correctly called the UP direction. ARIMAX and Logit predicted the wrong direction. Lasso predicted near-zero magnitude but correct direction. 3/5 models correct overall.
+      </p>
+    </section>
+
+    <section>
+      <h2>Core Results from Historical Test Set</h2>
+      <div class="grid">
+        <div class="card">
+          <p>Best Classification Model</p>
+          <div class="big">XGBoost</div>
+        </div>
+        <div class="card">
+          <p>Big-Move AUC</p>
+          <div class="big">0.721</div>
+        </div>
+        <div class="card">
+          <p>Big-Move Accuracy</p>
+          <div class="big">70%</div>
+        </div>
+        <div class="card">
+          <p>Best Regression RMSE</p>
+          <div class="big">0.0738 pp</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Additional Figures</h2>
+
+      <h3>SHAP Values</h3>
+      <img src="plot2_shap_beeswarm_bigmove.png" alt="SHAP Values">
+
+      <h3>Policy Surprise Over Time</h3>
+      <img src="plot10_policy_surprise.png" alt="Policy Surprise">
+
+      <h3>Forward Guidance Density</h3>
+      <img src="plot8_forward_guidance.png" alt="Forward Guidance">
+    </section>
+
+    <footer>
+      GWU Data Science Capstone | Spring 2026 | Fernando Vaca Castello
+    </footer>
+  </main>
+</body>
+</html>
